@@ -1,0 +1,100 @@
+swagger: '2.0'
+info:
+  title:  JavaScript Test
+  version: v1.0.0
+host: api.test.com
+basePath: /v1.0
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /users:
+    get:
+      summary: Get all the users and their todos
+      responses:
+        '200':
+          description: Successful response contains an array of users
+          schema:
+            $ref: '#/responses/Users'
+  '/users/{userId}':
+    get:
+      summary: Get a specific user
+      parameters:
+        - $ref: '#/parameters/userId'
+      responses:
+        '200':
+          description: Successful response contains user object
+          schema:
+            $ref: '#/responses/User'
+parameters:
+  userId:
+    name: userId
+    in: path
+    description: User ID path parameter
+    type: number
+    required: true
+responses:
+  Users:
+    description: Users response
+    schema:
+      $ref: '#/definitions/Users'
+  User:
+    description: User response
+    schema:
+      $ref: '#/definitions/User'
+definitions:
+  Users:
+    type: array
+    items:
+      $ref: '#/definitions/User'
+  User:
+    type: object
+    properties:
+      id:
+        type: number
+      name:
+        type: string
+      username:
+        type: string
+      email:
+        type: string
+      address:
+        $ref: '#/definitions/Address'
+      phone:
+        type: string
+      website:
+        type: string
+      company:
+        $ref: '#/definitions/Company'
+  Address:
+    type: object
+    properties:
+      street:
+        type: string
+      suite:
+        type: string
+      city:
+        type: string
+      zipcode:
+        type: string
+      geo:
+        $ref: '#/definitions/Geo'
+  Geo:
+    type: object
+    properties:
+      lat:
+        type: string
+      lng:
+        type: string
+  Company:
+    type: object
+    properties:
+      name:
+        type: string
+      catchPhrase:
+        type: string
+      bs:
+        type: string

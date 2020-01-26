@@ -1,0 +1,5 @@
+MONGO_USER_ADMIN=shishir
+MONGO_PASS_ADMIN=password
+
+MONGO_REPLICA_ADMIN=replicaAdmin
+MONGO_PASS_REPLICA=password
